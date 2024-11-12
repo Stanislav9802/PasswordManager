@@ -15,9 +15,30 @@ This is a simple application that allows you to store a list of credentials for 
     * Displaying a loading modal when saving data.
     * Simulating a delay for sending data to the backend (2 seconds).
 
-## Running Instructions
+## Installation
 
-1. **Install dependencies:**
+1. Clone the repository:
 
    ```bash
-   npm install
+   git clone https://github.com/Stanislav9802/PasswordManager.git
+   ```
+
+2. Requirements
+   To install and run the project, you need [NodeJS](https://nodejs.org/) v8+.
+
+3. Installing dependencies
+   To install dependencies, run the command:
+   
+   ```bash
+   $ npm i
+   ```
+
+4. Launching the Development Server
+   To start the development server, run the command:
+   
+   ```bash
+   npm run dev
+   ```
+
+5. Open the app
+   Go to the local server at: [http://localhost:5173](http://localhost:5173/)
