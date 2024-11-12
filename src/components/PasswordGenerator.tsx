@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { IconButton } from './IconButton';
 import { ArrowPathIcon } from '../shared/icons/ArrowPathIcon';
-import { CheckIcon } from '../shared/icons/checkIcon';
+import { CheckIcon } from '../shared/icons/CheckIcon';
 
 interface PasswordGeneratorProps {
   onGenerate: (password: string) => void;
@@ -40,11 +40,15 @@ const PasswordGenerator: React.FC<PasswordGeneratorProps> = ({
   const handlePassword = () => {
     onGenerate(password);
     generatePassword();
-    console.log(password);
   };
 
   const generatePassword = () => {
     const chars = activeTabs.join('');
+
+    if (chars.length === 0) {
+      setPassword('Добавьте условия генерации');
+      return;
+    }
 
     let pass = '';
 

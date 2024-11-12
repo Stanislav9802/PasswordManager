@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { IconButton } from './IconButton';
-import { DocumentMinusIcon } from '../shared/icons/documentMinusIcon';
+import { DocumentMinusIcon } from '../shared/icons/DocumentMinusIcon';
 import { ClipboardIcon } from '../shared/icons/ClipboardIcon';
 import { EyeIcon } from '../shared/icons/EyeIcon';
 
 interface Password {
+  index: number;
   service: string;
   password: string;
 }
@@ -15,7 +16,13 @@ interface PasswordListProps {
 }
 
 const PasswordList: React.FC<PasswordListProps> = ({ passwords, onDelete }) => {
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordIndex, setShowPasswordIndex] = useState(null);
+
+  const togglePasswordVisibility = (index: any) => {
+    setShowPasswordIndex(index === showPasswordIndex ? null : index);
+    console.log(showPasswordIndex);
+  };
 
   return (
     <div className="mt-5 bg-gray-700 p-5 border border-gray-600 rounded-xl">
@@ -33,11 +40,11 @@ const PasswordList: React.FC<PasswordListProps> = ({ passwords, onDelete }) => {
           >
             <span className="w-20">{service}</span>
             <span className="w-20 ">
-              {showPassword ? password : '********'}
+              {showPasswordIndex === service ? password : '********'}
             </span>
             <div className="flex">
               <IconButton
-                onClick={() => setShowPassword(!showPassword)}
+                onClick={() => togglePasswordVisibility(service)}
                 className="w-9 h-9"
               >
                 <EyeIcon className="w-5" />
